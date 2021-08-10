@@ -1,0 +1,202 @@
+<div role="main" class="main">
+
+    <div class="slider-with-overlay">
+
+        <div class="slider-container rev_slider_wrapper" style="height: 660px;">
+            <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 660, 'responsiveLevels': [4096,1200,992,500]}">
+                <ul>
+                    <li data-transition="fade">
+                        <img src="img/slides/slide-bg-5.jpg"  
+                            alt=""
+                            data-bgposition="center center" 
+                            data-bgfit="cover" 
+                            data-bgrepeat="no-repeat" 
+                            class="rev-slidebg">
+
+                        <div class="tp-caption"
+                            data-x="['177','177','center','center']" data-hoffset="['0','0','-150','-220']"
+                            data-y="280"
+                            data-start="1000"
+                            data-transform_in="x:[-300%];opacity:0;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+
+                        <div id="inicioTituloP1"
+                            class="tp-caption top-label"
+                            data-x="['227','227','center','center']"
+                            data-y="272"
+                            data-fontsize="['24','24','24','36']"	
+                            data-start="500"
+                            data-transform_in="y:[-300%];opacity:0;s:500;">¿BUSCAS PARA TU EVENTO EL</div>
+
+                        <div id="inicioTituloImagen"
+                            class="tp-caption"
+                            data-x="['480','480','center','center']" data-hoffset="['0','0','150','220']"
+                            data-y="280"
+                            data-start="1000"
+                            data-transform_in="x:[300%];opacity:0;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+
+                        <div id="inicioTituloP2"
+                            class="tp-caption main-label"
+                            data-x="['135','135','center','center']"
+                            data-y="['310','310','310','310']"
+                            data-start="1500"
+                            data-whitespace="nowrap"	
+                            data-fontsize="['62','62','62','82']"					 
+                            data-transform_in="y:[100%];s:500;"
+                            data-transform_out="opacity:0;s:500;"
+                            data-mask_in="x:0px;y:0px;">MEJOR PASTEL?</div>
+
+                        <div id="inicioTituloP3"
+                            class="tp-caption bottom-label"
+                            data-x="['185','185','center','center']"
+                            data-y="['380','380','380','380']"
+                            data-start="2000"
+                            data-fontsize="['20','20','20','30']"
+                            data-transform_in="y:[100%];opacity:0;s:500;">Revisa nuestros productos y servicios.</div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="home-intro" id="home-intro">
+            <div class="container">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <p>
+                            La pasteleria mas buscada en <em>Guadalupe Victoria</em>
+                            <span>Navega por nuestra pagina y contactanos.</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="slider-contact-form">
+            <div class="container">
+
+                <div class="row justify-content-end">
+                    <div class="col-lg-5">
+
+                        <div class="featured-boxes mt-0 mb-0">
+                            <div class="featured-box featured-box-primary mt-5" style="padding: 25px;">
+                                <div class="mx-auto">
+                                    <h2 style="color: #0088cc">Dejanos tus sugerencias</h2>
+                                    <div class="form-group">
+                                        <input type="text" id="contactoNombre" placeholder="Nombre" class="form-control my-3">
+                                        <input type="tel" id="contactoTelefono" placeholder="Telefono" class="form-control my-3">
+                                        <input type="text" id="contactoMotivo" placeholder="Asunto" class="form-control my-3">
+                                        <textarea class="form-control" id="contactoMensaje" rows="5" placeholder="Mensaje"></textarea><br>
+                                        <button class="btn btn-info" id="botonc" onclick="guardarContacto()">Enviar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    <div class="container" *ngFor="let edicion of ediciones | async">
+
+        <div class="row">
+            <div class="col-lg-7">
+                <h2>{{edicion.tituloParrafo[0]}} <strong>{{edicion.tituloParrafo[1]}}</strong></h2>
+                <p class="lead">{{edicion.parrafos[0]}}</p>
+
+                <p>{{edicion.parrafos[1]}}</p>
+
+                <div class="row mt-5 mb-5">
+                    <div class="col-lg-6">
+                        <div class="feature-box feature-box-style-2">
+                            <div class="feature-box-icon">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="heading-primary mb-1">{{edicion.experiencia[0]}}</h4>
+                                <p>{{edicion.experiencia[1]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="feature-box feature-box-style-2">
+                            <div class="feature-box-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="heading-primary mb-1">{{edicion.experiencia[2]}}</h4>
+                                <p>{{edicion.experiencia[3]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="tall">
+
+                <h4>Espacio de <strong>Trabajo</strong></h4>
+
+                <div data-plugin-lightbox data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a class="img-thumbnail d-block mb-5" href="../../../assets/img/office/our-office-1.jpg" data-plugin-options="{'type':'image'}">
+                                <img class="img-fluid" src="../../../assets/img/office/our-office-1.jpg" alt="Office">
+                                <span class="zoom">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="img-thumbnail d-block mb-5" href="../../../assets/img/office/our-office-2.jpg" data-plugin-options="{'type':'image'}">
+                                <img class="img-fluid" src="../../../assets/img/office/our-office-2.jpg" alt="Office">
+                                <span class="zoom">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="img-thumbnail d-block mb-5" href="../../../assets/img/office/our-office-3.jpg" data-plugin-options="{'type':'image'}">
+                                <img class="img-fluid" src="../../../assets/img/office/our-office-3.jpg" alt="Office">
+                                <span class="zoom">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5">
+                <h4>¿<strong>Donde</strong> nos encontramos?</h4>
+
+                <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
+                <div style="border-radius: 5px; border: 2px solid grey">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1816.1032818215217!2d-104.11521991047023!3d24.44361767898777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869af016d53a1b31%3A0x23144b5443c5ad2a!2sLA%20BARRA%20PASTELER%C3%8DA!5e0!3m2!1ses!2smx!4v1626157280593!5m2!1ses!2smx" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <ul class="list list-icons list-icons-style-3 mt-5">
+                    <li><i class="fa fa-map-marker"></i> <strong>Direccion:</strong> {{edicion.localInfoContacto[0]}}<br>{{edicion.localInfoContacto[1]}}<br>{{edicion.localInfoContacto[2]}}</li>
+                    <li><i class="fa fa-phone"></i> <strong>Telefono:</strong> {{edicion.localInfoContacto[3]}}</li>
+                    <li><i class="fa fa-envelope"></i> <strong>Correo:</strong> <a [href]="'mailto:'+edicion.localInfoContacto[4]">{{edicion.localInfoContacto[4]}}</a></li>
+                </ul>
+
+                <hr>
+
+                <h4><strong>Horario</strong> de trabajo</h4>
+                <ul class="list list-icons list-dark mt-4">
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[0]}}</li>
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[1]}}</li>
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[2]}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>

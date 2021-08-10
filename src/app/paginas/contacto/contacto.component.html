@@ -1,0 +1,70 @@
+<div role="main" class="main">
+
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Inicio</a></li>
+                        <li class="active">Contactanos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1>Contactanos</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
+    <div class="col-lg-12 mx-auto">
+        <div  style="border-radius: 5px; border: 2px solid grey">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1816.1032818215217!2d-104.11521991047023!3d24.44361767898777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869af016d53a1b31%3A0x23144b5443c5ad2a!2sLA%20BARRA%20PASTELER%C3%8DA!5e0!3m2!1ses!2smx!4v1626157280593!5m2!1ses!2smx" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row" *ngFor="let edicion of ediciones | async">
+            <div class="col-lg-6">
+
+                <h2 class="mb-3 mt-2"><strong>Escribenos</strong></h2>
+
+                <div class="form-group">
+                    <input type="text" id="contactoNombre" placeholder="Nombre" class="form-control my-3">
+                    <input type="tel" id="contactoTelefono" placeholder="Telefono" class="form-control my-3">
+                    <input type="text" id="contactoMotivo" placeholder="Asunto" class="form-control my-3">
+                    <textarea class="form-control" id="contactoMensaje" rows="5" placeholder="Mensaje"></textarea><br>
+                    <button class="btn btn-info" id="botonc" onclick="guardarContacto()">Enviar</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+                <h4 class="heading-primary mt-4">Mantente en <strong>Contacto</strong></h4>
+                <p id="parrafoContacto1">{{edicion.parrafoContacto1}}</p>
+                <hr>
+                <h4 class="heading-primary">Nuestro <strong>Local</strong></h4>
+                <ul class="list list-icons list-icons-style-3 mt-4">
+                    <li><i class="fa fa-map-marker"></i> <strong>Direccion:</strong> {{edicion.localInfoContacto[0]}}<br>{{edicion.localInfoContacto[1]}}<br>{{edicion.localInfoContacto[2]}}</li>
+                    <li><i class="fa fa-phone"></i> <strong>Telefono:</strong> {{edicion.localInfoContacto[3]}}</li>
+                    <li><i class="fa fa-envelope"></i> <strong>Correo:</strong> <a [href]="'mailto:'+edicion.localInfoContacto[4]">{{edicion.localInfoContacto[4]}}</a></li>
+                </ul>
+
+                <hr>
+
+                <h4 class="heading-primary"><strong>Horario</strong> de trabajo</h4>
+                <ul class="list list-icons list-dark mt-4">
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[0]}}</li>
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[1]}}</li>
+                    <li><i class="fa fa-clock-o"></i> {{edicion.horarioContacto[2]}}</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

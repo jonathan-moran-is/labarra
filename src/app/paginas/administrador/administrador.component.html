@@ -1,0 +1,233 @@
+<div role="main" class="main">
+
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Inicio</a></li>
+                        <li class="active">Administrador</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1>¡Bienvenido!</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div id="porfolioAjaxBox" class="ajax-box ajax-box-init">
+
+            <div class="bounce-loader">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+
+            <div class="ajax-box-content" id="porfolioAjaxBoxContent"></div>
+
+        </div>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item" data-option-value=""><a class="nav-link active" href="" (click)=" enableResumen = true; enableProductos = false; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Resumen</a></li>
+            <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = true; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Productos</a></li>
+            <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = false; enablePedidos = false; enableMensajes = true; enableEditar = false; ">Mensajes</a></li>
+        </ul>
+
+        <div class="mt-4 pt-2" *ngIf="enableResumen">
+            <div class="portfolio-item">
+
+                <h1 class="title">Resumen</h1>
+
+                <div>
+                    <h4 id="contadorVisitas"></h4>
+                    <h6>Visitas</h6>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-4 pt-2" *ngIf="enableProductos">
+            <section class="productoNuevo" id="productoNuevo">
+                <div clas="col-lg-12 d-flex justify-content-center">
+                    <button type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarNvoProducto()">Nuevo Producto</button>
+                </div>
+                <div class="row" *ngIf="enableNvoProducto">
+                    <div class="col-lg-12 bg-info text-white" style="padding: 25px;">                
+                    <div id="page-wrapper">
+                            <div class="container-fluid">
+                              <div class="row">
+                                    <div class="col-lg-9 col-md-11 col-sm-9">
+                                      <h2 class="title text-white">Ingresar datos del producto</h2>
+                                    </div>
+                                    <div class="col-lg-3 col-md-1 col-sm-3" (click)=" enableNvoProducto = false; ">
+                                        <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
+                                    </div>
+                                <!-- /.col-lg-12 -->
+            
+                                <div class="col-lg-12 row">
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvoProducto.nombreProducto" type="text" id="nombreProducto" placeholder="Nombre del Producto" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvoProducto.precioProducto" type="double" id="precioProducto" placeholder="Precio" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <textarea [(ngModel)]="nvoProducto.descripcionProducto" type="text" id="descripcionProducto" placeholder="Descripcion" class="form-control my-3"></textarea>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvoProducto.cantidadVendidaProducto" type="number" id="cantidadVendidaProducto" placeholder="Cantidad de Vendidos" class="form-control my-3">
+                                    </div>
+                                    <div class="input-group col-lg-6 col-sm-12">
+                                        <div class="input-group-prepend">
+                                        <label class="input-group-text col-lg-5" for="categoriaProducto">Categoria</label>
+                                        <select [(ngModel)]="nvoProducto.categoriaProducto" class="custom-select col-lg-7" id="categoriaProducto">
+                                            <option selected>Elegir...</option>
+                                            <option value="Pastel">Pastel</option>
+                                            <option value="Postre">Postre</option>
+                                            <option value="Panaderia">Panaderia</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-group col-lg-6 col-sm-12">
+                                        <div class="input-group-prepend">
+                                        <label class="input-group-text col-lg-12" for="calificacionProducto">Calificacion</label>
+                                        <select [(ngModel)]="nvoProducto.calificacionProducto" class="custom-select col-lg-12" id="calificacionProducto">
+                                            <option selected>Elegir...</option>
+                                            <option value="10%">0.5</option>
+                                            <option value="20%">1.0</option>
+                                            <option value="30%">1.5</option>
+                                            <option value="40%">2.0</option>
+                                            <option value="50%">2.5</option>
+                                            <option value="60%">3.0</option>
+                                            <option value="70%">3.5</option>
+                                            <option value="80%">4.0</option>
+                                            <option value="90%">4.5</option>
+                                            <option value="100%">5.0</option>
+                                        </select>
+                                        </div>
+                                    </div><br>
+                                    <div class="input-group col-lg-6 col-sm-12" style="padding: 25px;">
+                                        <div class="input-group-prepend">
+                                        <label class="input-group-text col-lg-12" for="imagenProducto">Imagen(es)</label>
+                                        <input type="file" accept="image/*" name="imagenProducto" id="imagenProducto" multiple (change)="subirImagen($event)">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-3d btn-light mb-2" id="boton" (click)="guardarProducto(); enableNvoProducto = false; ">Guardar</button>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    </div>
+                </div><br>
+            </section>
+            <section class="tablaP" id="tablaP">
+                <div class="row">
+                    <div class="col-lg-12 alert alert-success">
+                                
+                    <div id="page-wrapper">
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                    <h1>Productos</h1>
+                                </div>
+        
+                                <div id="productosTabla" *ngFor="let producto of productos" style="border-bottom: 1px solid gray; padding: 25px">
+                                    <div class="row col-lg-12 tablacontenedor">
+                                        <div class="row col-lg-12 tablasP">
+                                        <div class="col-lg-8 col-md-7 col-sm-7"><h4> {{producto.nombreProducto}}</h4></div>
+                                        <div class="col-lg-4 col-md-5 col-sm-5">
+                                            <div class="float-right row">
+                                                <div class="p-2" (click)=" nvoProducto = producto; enableNvoProducto = true; "><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                                                <div class="p-2" (click)="eliminarProducto(producto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <hr class="solid">
+                                        <div class=" row col-lg-12 tablasP">
+                                            <div class="col-lg-12"><h5>Precio: </h5><h6><strong>$ {{producto.precioProducto}}</strong></h6></div>
+                                        </div>
+                                        <div class="row col-lg-12 tablasP">
+                                            <div class="col-lg-6 tablaspacl"><strong>Categoria: </strong> <br>{{producto.categoriaProducto}}</div>
+                                            <div class="col-lg-6 tablaspacr"><strong>Descripcion:</strong> <br>{{producto.descripcionProducto}}</div>
+                                        </div>
+                                        <div class="row col-lg-12 tablasP">
+                                            <div class="col-lg-6 tablaspacl"><strong>Calificacion:</strong> <br>{{producto.calificacionProducto}}</div>
+                                            <div class="col-lg-6 tablaspacr"><strong>Cantidad Vendida:</strong> <br>{{producto.cantidadVendidaProducto}}</div>
+                                        </div>
+                                        <div class="row col-lg-12 tablasP">
+                                            <div class="col-lg-12">
+                                                <h5>Imagenes: </h5>
+                                                <div data-plugin-lightbox data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                <img id="imagen0" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[0]" alt="Imagen Producto">
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                                                <img id="imagen1" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[1]" alt="Imagen Producto">
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                                                <img id="imagen2" class="img-fluid" width="200px" height="150px" [src]="producto.imagenes[2]" alt="Imagen Producto">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div><br>
+                                </div>
+        
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    </div>
+                </div><br>
+            </section>
+        </div>
+
+        <div class="mt-4 pt-2" *ngIf="enableMensajes">
+            <div class="portfolio-item">
+
+                <h1 class="title">Mensajes</h1>
+
+                <div id="productosTabla" *ngFor="let contacto of contactos" style="border-bottom: 1px solid gray; padding: 25px">
+                    <div class="row col-lg-12 tablacontenedor">
+                        <div class="row col-lg-12 tablasP">
+                        <div class="col-lg-8 col-md-7 col-sm-7"><h5> {{contacto.contactoMotivo}}</h5></div>
+                        <div class="col-lg-4 col-md-5 col-sm-5">
+                            <div class="float-right row">
+                                <div class="p-2" (click)="eliminarContacto(contacto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                        </div>
+                        <hr class="solid">
+                        <div class=" row col-lg-12 tablasP">
+                            <div class="col-lg-12"><h6>Telefono: </h6><p> {{contacto.contactoTelefono}}</p></div>
+                        </div>
+                        <div class="row col-lg-12 tablasP">
+                            <div class="col-lg-6 tablaspacl">Nombre: <br>{{contacto.contactoNombre}}</div>
+                            <div class="col-lg-6 tablaspacr">Mensaje: <br>{{contacto.contactoMensaje}}</div>
+                        </div>
+                        <hr>
+                    </div><br>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
