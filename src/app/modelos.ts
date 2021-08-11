@@ -22,3 +22,13 @@ export interface Contacto {
     fecha: Date;
     id: string;
 }
+
+export interface Edicion {
+    experiencia: any;
+    horarioContacto: any;
+    localInfoContacto: any;
+    parrafoContacto1: string;
+    parrafos: any;
+    tituloParrafo: any;
+    imagenes: any;
+}

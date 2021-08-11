@@ -4,6 +4,8 @@ import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/stor
 import { Observable } from 'rxjs';
 import { FirestorageService } from 'src/app/servicios/firestorage.service';
 import { FirestoreService } from 'src/app/servicios/firestore.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
+
 
 import { Producto } from 'src/app/modelos';
 

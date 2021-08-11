@@ -16,7 +16,7 @@ export class FirestorageService {
       const filePath = path+'/'+nombre;
       const ref = this.storage.ref(filePath);
       const task = ref.put(file);
-      /*task.snapshotChanges().pipe(
+      task.snapshotChanges().pipe(
         finalize(() => {
           ref.getDownloadURL().subscribe( res => {
             const downloadURL = res;
@@ -25,7 +25,7 @@ export class FirestorageService {
           });
         })
      )
-    .subscribe()*/
+    .subscribe()
     });
   }
 

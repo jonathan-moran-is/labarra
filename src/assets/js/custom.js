@@ -1,5 +1,5 @@
 
-const contadorElemento = document.getElementById('contadorVisitas');
+/*-const contadorElemento = document.getElementById('contadorVisitas');
 
 actualizarContadorVisita();
 
@@ -9,4 +9,4 @@ function actualizarContadorVisita(){
     .then( res => {
         contadorElemento.innerHTML = res.value;
     });
-}
+}-*/

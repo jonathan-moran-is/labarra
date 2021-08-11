@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FirestorageService } from './servicios/firestorage.service';
 import { FirestoreService } from './servicios/firestore.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { FirestoreService } from './servicios/firestore.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     { provide: BUCKET, useValue: 'labarra-f7836.appspot.com' },

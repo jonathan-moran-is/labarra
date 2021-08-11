@@ -33,7 +33,7 @@
         </div>
 
         <ul class="nav nav-pills">
-            <li class="nav-item" data-option-value=""><a class="nav-link active" href="" (click)=" enableResumen = true; enableProductos = false; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Resumen</a></li>
+            <li class="nav-item" data-option-value=""><a class="nav-link active" href="" (click)=" enableResumen = true; enableProductos = false; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Contenido</a></li>
             <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = true; enablePedidos = false; enableMensajes = false; enableEditar = false; ">Productos</a></li>
             <li class="nav-item" data-option-value=""><a class="nav-link" href="" (click)=" enableResumen = false; enableProductos = false; enablePedidos = false; enableMensajes = true; enableEditar = false; ">Mensajes</a></li>
         </ul>
@@ -41,12 +41,181 @@
         <div class="mt-4 pt-2" *ngIf="enableResumen">
             <div class="portfolio-item">
 
-                <h1 class="title">Resumen</h1>
+                <h1 class="title">Contenido</h1>
 
-                <div>
-                    <h4 id="contadorVisitas"></h4>
-                    <h6>Visitas</h6>
+                <div clas="row justify-content-around">
+                    <button style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 2.5%; width: 300px;" type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarEdicionInicio()">Edicion Inicio</button>
+                    <button style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 2.5%; width: 300px;" type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarEdicionContacto()">Edicion Contacto</button>
                 </div>
+
+                <div class="row" *ngIf="enableEdicionInicio">
+                    <div class="col-lg-12 bg-info text-white" style="padding: 25px;">                
+                    <div id="page-wrapper">
+                            <div class="container-fluid">
+                              <div class="row">
+                                    <div class="col-lg-9 col-md-11 col-sm-9">
+                                      <h2 class="title text-white">Editar datos en Inicio</h2>
+                                    </div>
+                                    <div class="col-lg-3 col-md-1 col-sm-3" (click)=" enableEdicionInicio = false; ">
+                                        <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
+                                    </div>
+                                <!-- /.col-lg-12 -->
+            
+                                <div class="col-lg-12 row">
+                                    <div class="col-lg-12">
+                                        <h5>Titulo</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.tituloParrafo[0]" type="text" id="tituloParrafo" placeholder="Titulo" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.tituloParrafo[1]" type="text" id="tituloParrafoStrong" placeholder="Titulo(palabras en negritas)" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Parrafo</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <textarea [(ngModel)]="nvaEdicion.parrafos[0]" type="text" id="parrafo1" placeholder="1er parrafo" class="form-control my-3"></textarea>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <textarea [(ngModel)]="nvaEdicion.parrafos[1]" type="text" id="parrafo2" placeholder="2do parrafo" class="form-control my-3"></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Experiencia</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.experiencia[0]" type="text" id="experienciaAños" placeholder="Años en el mercado" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.experiencia[1]" type="text" id="experienciaAñosParrafo" placeholder="Años en el mercado - parrafo" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.experiencia[2]" type="text" id="experienciaClientes" placeholder="Experiencia de clientes" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.experiencia[3]" type="text" id="experienciaAñosClientes" placeholder="Experiencia de clientes - parrafo" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Direccion</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[0]" type="text" id="direccionCalle" placeholder="Calle y Numero" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[1]" type="text" id="direccionColonia" placeholder="Colonia o fraccionamiento" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[2]" type="text" id="direccionCiudad" placeholder="Ciudad" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Telefono & Correo</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[3]" type="text" id="inicioTelefono" placeholder="Telefono" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[4]" type="text" id="inicioCorreo" placeholder="Correo" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Horario</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[0]" type="text" id="horarioSemana" placeholder="Semana - Horario" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[1]" type="text" id="horarioSabado" placeholder="Sabado - Horario" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[2]" type="text" id="horarioDomingo" placeholder="Domingo - Horario" class="form-control my-3">
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-3d btn-light mb-2" id="boton" (click)="guardarEdicion(); enableEdicionInicio = false; ">Guardar</button>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    </div>
+                </div><br>
+
+                <div class="row" *ngIf="enableEdicionContacto">
+                    <div class="col-lg-12 bg-info text-white" style="padding: 25px;">                
+                    <div id="page-wrapper">
+                            <div class="container-fluid">
+                              <div class="row">
+                                    <div class="col-lg-9 col-md-11 col-sm-9">
+                                      <h2 class="title text-white">Ingresar datos del producto</h2>
+                                    </div>
+                                    <div class="col-lg-3 col-md-1 col-sm-3" (click)=" enableEdicionContacto = false; ">
+                                        <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
+                                    </div>
+                                <!-- /.col-lg-12 -->
+            
+                                <div class="col-lg-12 row">
+                                    <div class="col-lg-12">
+                                        <h5>Seccion "Mantente en Contacto"</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <textarea [(ngModel)]="nvaEdicion.parrafoContacto1" type="text" id="parrafo" placeholder="Parrafo en Mantente en Contacto" class="form-control my-3"></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Direccion</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[0]" type="text" id="direccionCalle" placeholder="Calle y Numero" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[1]" type="text" id="direccionColonia" placeholder="Colonia o fraccionamiento" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[2]" type="text" id="direccionCiudad" placeholder="Ciudad" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Telefono & Correo</h5>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[3]" type="text" id="inicioTelefono" placeholder="Telefono" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.localInfoContacto[4]" type="text" id="inicioCorreo" placeholder="Correo" class="form-control my-3">
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-12">
+                                        <h5>Horario</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[0]" type="text" id="horarioSemana" placeholder="Semana - Horario" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[1]" type="text" id="horarioSabado" placeholder="Sabado - Horario" class="form-control my-3">
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <input [(ngModel)]="nvaEdicion.horarioContacto[2]" type="text" id="horarioDomingo" placeholder="Domingo - Horario" class="form-control my-3">
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-3d btn-light mb-2" id="boton" (click)="guardarEdicion(); enableEdicionContacto = false; ">Guardar</button>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    </div>
+                </div><br>
 
             </div>
         </div>
@@ -54,10 +223,10 @@
         <div class="mt-4 pt-2" *ngIf="enableProductos">
             <section class="productoNuevo" id="productoNuevo">
                 <div clas="col-lg-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarNvoProducto()">Nuevo Producto</button>
+                    <button style="margin-left: 30%; width: 40%;" type="button" class="btn btn-3d btn-lg btn-quaternary mb-2" (click)="habilitarNvoProducto()">Nuevo Producto</button>
                 </div>
                 <div class="row" *ngIf="enableNvoProducto">
-                    <div class="col-lg-12 bg-info text-white" style="padding: 25px;">                
+                    <div class="col-lg-12 bg-secondary text-white" style="padding: 25px; border-radius: 5px;">                
                     <div id="page-wrapper">
                             <div class="container-fluid">
                               <div class="row">
@@ -98,7 +267,7 @@
                                         <div class="input-group-prepend">
                                         <label class="input-group-text col-lg-12" for="calificacionProducto">Calificacion</label>
                                         <select [(ngModel)]="nvoProducto.calificacionProducto" class="custom-select col-lg-12" id="calificacionProducto">
-                                            <option selected>Elegir...</option>
+                                            <option selected>Elegir Inicial...</option>
                                             <option value="10%">0.5</option>
                                             <option value="20%">1.0</option>
                                             <option value="30%">1.5</option>
@@ -134,7 +303,7 @@
             </section>
             <section class="tablaP" id="tablaP">
                 <div class="row">
-                    <div class="col-lg-12 alert alert-success">
+                    <div class="col-lg-12 alert alert-light" style="padding: 50px; background-color: rgba(214, 135, 208, 0.145);">
                                 
                     <div id="page-wrapper">
                             <div class="container-fluid">
@@ -208,8 +377,9 @@
                         <div class="row col-lg-12 tablasP">
                         <div class="col-lg-8 col-md-7 col-sm-7"><h5> {{contacto.contactoMotivo}}</h5></div>
                         <div class="col-lg-4 col-md-5 col-sm-5">
-                            <div class="float-right row">
-                                <div class="p-2" (click)="eliminarContacto(contacto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                            <div class="float-right row" style="margin: 2.5px">
+                                <a [attr.href]="'https://wa.me/+521'+contacto.contactoTelefono+'?text=¡Gracias%20por%20comunicarse%20con%20nosotros!%0A¡Pronto%20recibir%20una%20respuesta!'" target="_blank" class="btn btn-success pt-2 pb-2 pr-3 pl-3"><i class="fa fa-whatsapp"></i></a>
+                                <div class="btn btn-danger pt-2 pb-2 pr-3 pl-3" (click)="eliminarContacto(contacto)"><i class="fa fa-trash" aria-hidden="true"></i></div>
                             </div>
                         </div>
                         </div>
