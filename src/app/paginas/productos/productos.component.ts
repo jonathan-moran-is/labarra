@@ -19,6 +19,8 @@ export class ProductosComponent implements OnInit {
 
   enableTablaProductos = true;
   enableProductoS = false;
+  enableFormularioPedido = false;
+  enableFormularioPago = false;
   productos: Producto[] = [];
 
   productoSeleccionado: Producto;

@@ -128,12 +128,19 @@ export class AdministradorComponent implements OnInit {
   }
 
   //Edit Contenido
-  guardarEdicion(){
+  async guardarEdicion(){
+    for (let i = 0; i < 3; i++) {
+      const path = 'Imagenes';
+      const nombre = "imagenInicio_"+i;
+      const res = await this.firestorageService.subirImagen(this.nvoArchivo[i], path, nombre); 
+      this.nvaEdicion.imagenesInicio[i]=res;       
+      console.log('¡'+(i+1)+'° archivo cargado! URL: ', res);      
+    }
     this.FirestoreService.crearDoc(this.nvaEdicion, this.pathEdicion, this.edicionID);
     alert('Cambios guardados con exito!');
   }
 
-  habilitarEdicionInicio(){
+   habilitarEdicionInicio(){
     this.enableEdicionInicio = true;
     this.enableEdicionContacto = false;
     this.FirestoreService.obtenerDoc<Edicion>(this.pathEdicion, this.edicionID).subscribe( res => {

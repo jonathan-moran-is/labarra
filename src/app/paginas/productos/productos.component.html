@@ -30,9 +30,9 @@
                             </div>
     
                             <div class="row col-lg-12" style="padding-left: 10%;">
-                                <div class="col-lg-3 col-md-6 col-sm-12 tablaProductos row" *ngFor="let producto of productos" style="box-shadow: 2.5px 2.5px 15px grey; margin: 25px; padding: 10px;">
+                                <div class="col-lg-4 col-md-6 col-sm-12 tablaProductos row" *ngFor="let producto of productos" style="box-shadow: 2.5px 2.5px 15px grey; margin: 25px; padding: 10px;">
                                     <div class="card" style="width: 100%;">
-                                        <img [src]="producto.imagenes[0]" class="card-img-top" alt="Imagen del Producto">
+                                        <img [src]="producto.imagenes[0]" class="card-img-top" alt="Imagen del Producto" style="width: auto; height: 150px;">
                                         <div class="card-body">
                                           <h5 class="card-title" style="height: 30px;">{{producto.nombreProducto}}</h5>
                                           <hr>
@@ -108,20 +108,15 @@
                         </p>
 
                         <p class="mb-4">{{productoSeleccionado.descripcionProducto}}</p>
-
-                        <form enctype="multipart/form-data" method="post" class="cart">
-                            <div class="quantity">
-                                <input type="button" class="minus" value="-">
-                                <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                <input type="button" class="plus" value="+">
-                            </div>
-                            <a [attr.href]="'https://wa.me/+5216181063451?text=¡Buen%20día!%20Me%20interesa%20el%20producto:%20*'+productoSeleccionado.nombreProducto+'*.%20Quisiera%20consultar%20los%20detalles.'" target="_blank" class="btn btn-primary pt-2 pb-2 pr-3 pl-3">Solicitar producto <i class="fa fa-whatsapp"></i></a>
-                        </form>
-
+                        
                         <div class="product_meta">
                             <span class="posted_in">Categoria: <a rel="tag">{{productoSeleccionado.categoriaProducto}}</a></span>
+                        </div><br>
+                        <hr><br>
+                        <div>
+                            <a [attr.href]="'https://wa.me/+5216181234567?text=¡Buen%20día!%20Me%20interesa%20el%20servicio:%20*'+productoSeleccionado.nombreProducto+'*.%20Quisiera%20consultar%20los%20detalles.'" target="_blank" class="btn btn-info pt-2 pb-2 pr-3 pl-3">Solicitar informacion <i class="fa fa-whatsapp"></i></a><br><br/>
+                            <a target="_blank" class="btn btn-success pt-2 pb-2 pr-3 pl-3" (click)=" enableTablaProductos = false; enableProductoS = false; enableFormularioPedido = true; productoSeleccionado = producto; ">Comprar Producto <i class="fa fa-credit-card"></i></a><br><br/>
                         </div>
-
                     </div>
 
 
@@ -173,6 +168,141 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="producto container" *ngIf="enableFormularioPedido">
+            <div class="row">
+                <div class="col">
+                    <div class="col-lg-12 col-md-12 col-sm-12" (click)="enableTablaProductos = true; enableFormularioPedido = false;">
+                        <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-3x" aria-hidden="true"></i></div>
+                    </div>
+                    <hr class="tall">
+                </div>
+            </div>
+
+            <h1>Direccion de Envio</h1>
+            <div class="col-lg-12 row">
+                <div class="col-lg-12">
+                    <h5>Direccion</h5>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[0]" type="text" id="direccionCalle" placeholder="Calle y Numero" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[1]" type="text" id="direccionColonia" placeholder="Colonia o fraccionamiento" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[2]" type="text" id="direccionCiudad" placeholder="Ciudad" class="form-control my-3">
+                </div>
+                <br>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[0]" type="text" id="direccionCalle" placeholder="Codigo Postal" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[1]" type="text" id="direccionColonia" placeholder="Estado o Provincia" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[2]" type="text" id="direccionCiudad" placeholder="Entre que calles" class="form-control my-3">
+                </div>
+                <br>
+                <div class="col-lg-12">
+                    <h5>Telefono & Correo</h5>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[3]" type="text" id="inicioTelefono" placeholder="Telefono" class="form-control my-3">
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[4]" type="text" id="inicioCorreo" placeholder="Correo" class="form-control my-3">
+                </div>
+                <br>
+                <div class="col-lg-12">
+                    <h5>Referencias</h5>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.horarioContacto[0]" type="text" id="horarioSemana" placeholder="Descripcion del lugar" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.horarioContacto[1]" type="text" id="horarioSabado" placeholder="Nombre de quien recibe" class="form-control my-3">
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.horarioContacto[2]" type="text" id="horarioDomingo" placeholder="Horario de entrega" class="form-control my-3">
+                </div>
+
+                <div class="col-lg-12">
+                    <button class="btn btn-3d btn-light mb-2" id="boton" (click)="enableFormularioPedido = false; enableFormularioPago= true; productoSeleccionado = producto;">Siguiente</button>
+                </div>
+            </div>
+
+        </section>
+        <section class="producto container" *ngIf="enableFormularioPago">
+            <div class="row">
+                <div class="col">
+                    <div class="col-lg-12 col-md-12 col-sm-12" (click)="enableFormularioPedido = true; enableFormularioPago = false;  productoSeleccionado = producto;">
+                        <div class="p-2 d-flex flex-row-reverse"><i class="fa fa-times fa-3x" aria-hidden="true"></i></div>
+                    </div>
+                    <hr class="tall">
+                </div>
+            </div>
+
+            <h1>Realiza tu pago con tarjeta de débito/crédito</h1>
+            <div class="col-lg-12 row">
+                <div class="col-lg-12">
+                    <h5>Numero de la Tarjeta</h5>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[0]" type="text" id="direccionCalle" placeholder="Numero de la Tarjeta" class="form-control my-3">
+                </div>
+                <br>
+                <div class="col-lg-12">
+                    <h5>Nombre del titular de la tarjeta</h5>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[3]" type="text" id="inicioTelefono" placeholder="Nombres" class="form-control my-3">
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <input [(ngModel)]="nvaEdicion.localInfoContacto[4]" type="text" id="inicioCorreo" placeholder="Apellidos" class="form-control my-3">
+                </div>
+                <br>
+                <div class="col-lg-6">
+                    <h5>Vencimiento</h5>
+                </div>
+                <div class="col-lg-6">
+                    <h5>CSC</h5>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text col-lg-5" for="categoriaProducto">MM</label>
+                    <select [(ngModel)]="nvoProducto.categoriaProducto" class="custom-select col-lg-7" id="categoriaProducto">
+                        <option selected>MM...</option>
+                        <option value="Pastel">01</option>
+                        <option value="Postre">02</option>
+                        <option value="Galletas&Panes">03</option>
+                        <option value="Brownies">04</option>
+                        <option value="Otros">05</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text col-lg-5" for="categoriaProducto">AA</label>
+                    <select [(ngModel)]="nvoProducto.categoriaProducto" class="custom-select col-lg-7" id="categoriaProducto">
+                        <option selected>AA...</option>
+                        <option value="Pastel">2022</option>
+                        <option value="Postre">2023</option>
+                        <option value="Galletas&Panes">2024</option>
+                        <option value="Brownies">2025</option>
+                        <option value="Otros">2026</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <input [(ngModel)]="nvaEdicion.horarioContacto[1]" type="text" id="horarioSabado" placeholder="Nombre de quien recibe" class="form-control my-3">
+                </div>
+                <div class="col-lg-12">
+                    <button class="btn btn-3d btn-light mb-2" id="boton" (click)="enableFormularioPedido = false; enableFormularioPago= true; productoSeleccionado = producto;">Confirmar</button>
+                </div>
+            </div>
+
         </section>
 
     </div>

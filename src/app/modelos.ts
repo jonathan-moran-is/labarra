@@ -30,5 +30,23 @@ export interface Edicion {
     parrafoContacto1: string;
     parrafos: any;
     tituloParrafo: any;
-    imagenes: any;
+    imagenesInicio: any;
+}
+
+export interface Pedido {
+    nombreCliente: string;
+    direccion: string;
+    numeroTelefono: number;
+    cantidad: number;
+    pago : [
+        numeroTarjeta: number,
+        nombres: string,
+        apellidos: string,
+        vencimiento: Date,
+        csc: number,
+        monto: number,
+        credito: boolean
+    ];
+    nombreProducto: string;
+    precioProducto: number;
 }
